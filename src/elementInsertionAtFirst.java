@@ -32,6 +32,7 @@ public class elementInsertionAtFirst {
             tail=head;
         }
         size+=1;
+
     }
 
     public void display(){
