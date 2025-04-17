@@ -23,17 +23,28 @@ public class elementInsertionAtFirst {
         size=0;
     }
 
-    public void insertFirst(int value){
+    public void insertFirst(int value) {
+        // Step 1: Create a new node with the given value
         Node node = new Node(value);
-        node.next=head;
-        head=node;
 
-        if(tail==null){
-            tail=head;
+        // Step 2: Set the new node's next pointer to point to the current head
+        // This links the new node to the beginning of the list
+        node.next = head;
+
+        // Step 3: Update the head to be the new node
+        // Now the new node becomes the first element in the list
+        head = node;
+
+        // Step 4: If the list was empty before insertion (tail is null),
+        // then the new node is both head and tail
+        if (tail == null) {
+            tail = head;
         }
-        size+=1;
 
+        // Step 5: Increase the size of the linked list
+        size += 1;
     }
+
 
     public void display(){
         Node temp=head;
