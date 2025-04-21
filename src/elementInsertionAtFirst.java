@@ -23,7 +23,7 @@ public class elementInsertionAtFirst {
         size=0;
     }
 
-    public void insertFirst(int value) {
+    public Node insertFirst(int value) {
         // Step 1: Create a new node with the given value
         Node node = new Node(value);
 
@@ -43,6 +43,78 @@ public class elementInsertionAtFirst {
 
         // Step 5: Increase the size of the linked list
         size += 1;
+
+        return head;
+    }
+
+
+    public Node insertLast(int val){
+        Node node = new Node(val);
+        Node temp=head;
+
+        if(head==null){
+            head=node;
+            node.next=null;
+            return head;
+        }
+
+        while (temp.next!=null){
+            temp=temp.next;
+
+        }
+
+        temp.next=node;
+        node.next=null;
+
+
+        return head;
+    }
+
+    public Node insertKposition(int val,int k){
+        Node node = new Node(val);
+        Node temp=head;
+
+        if(k==1) {
+            node.next=head;
+            head=node;
+            return head;
+        }
+        int count=1;
+        while (temp.next!=null){
+            count+=1;
+            if(count==k){
+                node.next=temp.next;
+                temp.next=node;
+            }
+            temp=temp.next;
+        }
+        if(k>count) {
+            System.out.println("Please enter a valid position");
+            return null;
+        }
+        return head;
+    }
+
+    public Node insertAfterElement(int val,int element){
+        Node node = new Node(val);
+        Node temp=head;
+        Node prev=null;
+        if (head.value==element){
+            Node temp1=head.next.next;
+            head.next=node;
+            node.next=temp1;
+            return head;
+        }
+
+        while (temp.next!=null){
+            prev=temp;
+            if(temp.value==element){
+                node.next=temp.next;
+                prev.next=node;
+            }
+            temp=temp.next;
+        }
+        return head;
     }
 
     /******************************-----------Deletion Methods ---------******************************************************************************/
@@ -94,6 +166,24 @@ public class elementInsertionAtFirst {
     }
 
 
+    public Node deleteValue(int value){
+        Node temp=head;
+        Node prev=null;
+        if(head.value==value){
+            return head=head.next;
+        }
+
+        while (temp.next!=null){
+            prev=temp;
+            if(temp.next.value==value){
+                prev.next=prev.next.next;
+            }
+            temp=temp.next;
+        }
+        return head;
+    }
+
+
     /******************************-----------Display Method ---------******************************************************************************/
 
 
@@ -114,15 +204,36 @@ public class elementInsertionAtFirst {
 
     public static void main(String[] args) {
         elementInsertionAtFirst demo=new elementInsertionAtFirst();
-        demo.insertFirst(10);
+//        demo.insertLast(788);
+//
+//        demo.display();
+//        demo.insertKposition(236,1);
+//        demo.display();
+//        demo.insertFirst(10);
+//        demo.insertKposition(11111,1);
+//        demo.display();
         demo.insertFirst(11);
         demo.insertFirst(14);
         demo.insertFirst(17);
         demo.insertFirst(18);
+        demo.insertFirst(22);
+        demo.insertAfterElement(55,14);
+        demo.insertAfterElement(59,22);
+        demo.display();
         demo.insertFirst(12);
+        demo.insertKposition(11590,25);
         demo.insertFirst(19);
         demo.insertFirst(21);
         demo.display();
+        demo.insertKposition(145,3);
+        demo.insertKposition(1,1);
+        demo.display();
+//        demo.insertKposition(1,)
+//        demo.insertLast(66);
+//        demo.display();
+//
+//        demo.deleteValue(18);
+//        demo.display();
 
        // System.out.println(demo.deletionAtFirst());
 //        System.out.println(demo.deleteTail());
