@@ -5,6 +5,7 @@ public class elementInsertionAtFirst {
     private Node tail;
     private int size;
 
+
     private class Node{
         private int value;
         private Node next;
