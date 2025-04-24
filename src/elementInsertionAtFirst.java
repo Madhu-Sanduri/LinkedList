@@ -49,6 +49,7 @@ public class elementInsertionAtFirst {
     }
 
 
+
     public Node insertLast(int val){
         Node node = new Node(val);
         Node temp=head;
@@ -66,7 +67,7 @@ public class elementInsertionAtFirst {
 
         temp.next=node;
         node.next=null;
-
+        size++;
 
         return head;
     }
@@ -84,8 +85,8 @@ public class elementInsertionAtFirst {
         while (temp.next!=null){
             count+=1;
             if(count==k){
-                node.next=temp.next;
-                temp.next=node;
+                node.next=temp.next; // 3 ki next is 4
+                temp.next=node; // 2 ki next 3
             }
             temp=temp.next;
         }
@@ -93,6 +94,7 @@ public class elementInsertionAtFirst {
             System.out.println("Please enter a valid position");
             return null;
         }
+        size++;
         return head;
     }
 
@@ -115,6 +117,7 @@ public class elementInsertionAtFirst {
             }
             temp=temp.next;
         }
+        size++;
         return head;
     }
 
@@ -132,6 +135,8 @@ public class elementInsertionAtFirst {
 
         return val;
     }
+
+
 
     public Node deleteElement(int k){
         Node temp=head;
@@ -151,6 +156,7 @@ public class elementInsertionAtFirst {
             }
             temp=temp.next;
         }
+        size--;
         return head;
     }
 
@@ -162,7 +168,7 @@ public class elementInsertionAtFirst {
         }
 
         temp.next=null;
-
+        size--;
         return head;
     }
 
@@ -181,6 +187,7 @@ public class elementInsertionAtFirst {
             }
             temp=temp.next;
         }
+        size--;
         return head;
     }
 
@@ -198,6 +205,20 @@ public class elementInsertionAtFirst {
         System.out.println("END");
     }
 
+    public static int sizeOfLL(Node head){
+        int count=0;
+        Node temp=head;
+        while (temp.next!=null){
+            temp=temp.next;
+            count++;
+        }
+
+        return count;
+    }
+
+    public int size(){
+        return size;
+    }
 
 
 
@@ -205,6 +226,22 @@ public class elementInsertionAtFirst {
 
     public static void main(String[] args) {
         elementInsertionAtFirst demo=new elementInsertionAtFirst();
+        demo.insertFirst(1);
+        demo.insertLast(2);
+        demo.insertLast(3);
+        demo.insertLast(4);
+        demo.insertLast(5);
+        System.out.println("size of LL -->"+sizeOfLL(demo.head));
+        System.out.println(demo.size());
+        demo.display();
+        demo.deletionAtFirst();
+        System.out.println("size of LL -->"+sizeOfLL(demo.head));
+        System.out.println(demo.size());
+//        demo.deleteTail(6,5);
+        demo.deleteTail();
+        demo.deleteValue(3);
+        System.out.println(demo.size());
+        demo.display();
 //        demo.insertLast(788);
 //
 //        demo.display();
@@ -213,22 +250,28 @@ public class elementInsertionAtFirst {
 //        demo.insertFirst(10);
 //        demo.insertKposition(11111,1);
 //        demo.display();
-        demo.insertFirst(11);
-        demo.insertFirst(14);
-        demo.insertFirst(17);
-        demo.insertFirst(18);
-        demo.insertFirst(22);
-        demo.insertAfterElement(55,14);
-        demo.insertAfterElement(59,22);
-        demo.display();
-        demo.insertFirst(12);
-        demo.insertKposition(11590,25);
-        demo.insertFirst(19);
-        demo.insertFirst(21);
-        demo.display();
-        demo.insertKposition(145,3);
-        demo.insertKposition(1,1);
-        demo.display();
+//        demo.insertLast(1);
+//        demo.insertLast(2);
+//        demo.insertLast(3);
+//        demo.insertLast(4);
+//        demo.insertLast(5);
+//        demo.display();
+//        demo.insertFirst(11);
+//        demo.insertFirst(14);
+//        demo.insertFirst(17);
+//        demo.insertFirst(18);
+//        demo.insertFirst(22);
+//        demo.insertAfterElement(55,14);
+//        demo.insertAfterElement(59,22);
+//        demo.display();
+//        demo.insertFirst(12);
+//        demo.insertKposition(11590,25);
+//        demo.insertFirst(19);
+//        demo.insertFirst(21);
+//        demo.display();
+//        demo.insertKposition(145,3);
+//        demo.insertKposition(1,1);
+//        demo.display();
 //        demo.insertKposition(1,)
 //        demo.insertLast(66);
 //        demo.display();
