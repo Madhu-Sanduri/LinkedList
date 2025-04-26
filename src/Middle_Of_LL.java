@@ -58,7 +58,7 @@ public class Middle_Of_LL {
 
     public int solution(Node head,int k){
 
-        int pos=size((head)/2)+1;
+        int pos=(size((head))/2)+1;
 
         int count=0;
         Node temp=head;
