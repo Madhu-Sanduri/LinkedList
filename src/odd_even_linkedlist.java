@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class odd_even_linkedlist {
-
+    private static List<Integer> list;
     public Node head;
     public Node tail;
     public int size;
@@ -26,14 +26,30 @@ public class odd_even_linkedlist {
     }
 
     public Node solution(Node head){
-        List<Integer> list = new ArrayList<>();
+        list = new ArrayList<>();
 
         Node temp=head;
 
-        while (temp.next!=null || temp!=null){
+        /***********for odd iterations**********************/
+        while(temp!=null && temp.next!=null){
             list.add(temp.value);
-            temp=temp.next;
+            temp=temp.next.next;
         }
+
+//        while (temp!=null && temp.next!=null){
+//            list.add(temp.value);
+//            temp=temp.next.next;
+//        }
+        if(temp!=null) list.add(temp.value); //when the size is odd it will go through it
+
+        /***********for even iterations**********************/
+        temp=head.next;
+        while ( temp.next!=null && temp.next.next!=null ){
+            list.add(temp.value);
+            temp=temp.next.next;
+        }
+        list.add(temp.value);
+//        head=null;
         System.out.println(list);
         return head;
     }
@@ -74,7 +90,7 @@ public class odd_even_linkedlist {
 
     public static void main(String[] args) {
         odd_even_linkedlist demo = new odd_even_linkedlist();
-        int []a={1,2,3,4,5};
+        int []a={1,2,3,4,5,6};
         for(int i:a){
             demo.insertLast(i);
         }
@@ -82,5 +98,10 @@ public class odd_even_linkedlist {
         System.out.println(demo.size);
 
         demo.solution(demo.head);
+        demo.head=null;
+        for(int i:list){
+            demo.insertLast(i);
+        }
+        demo.display();
     }
 }
